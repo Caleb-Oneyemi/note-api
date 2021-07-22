@@ -22,6 +22,7 @@ const Mutation = {
             author: mongoose.Types.ObjectId(ctx.user.id)
         });
     },
+
     updateNote: async(
         parent: any, 
         args: { id: string, content: string }, 
@@ -42,6 +43,7 @@ const Mutation = {
             { new: true }
         );
     },
+
     deleteNote: async(
         parent: any, 
         args: { id: string, content: string }, 
@@ -63,6 +65,7 @@ const Mutation = {
             return false;
         }
     },
+
     signUp: async(
         parent: any, 
         args: { username: string, email: string, password: string }, 
@@ -85,6 +88,7 @@ const Mutation = {
             throw new Error('Error creating account');
         }
     },
+
     signIn: async(
         parent: any, 
         args: { username: string, email: string, password: string }, 
@@ -105,6 +109,7 @@ const Mutation = {
 
         return jwt.sign({ id: user._id }, process.env.JWT_SECRET as string);
     },
+    
     toggleFavorite: async (
         parent: any, 
         args: { id: string }, 

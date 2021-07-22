@@ -1,5 +1,6 @@
 const Query = {
     hello: () => 'Welcome',
+    
     notes: async (
         parent: any, 
         args: any, 
@@ -7,6 +8,7 @@ const Query = {
     ) => {
         return await ctx.models.Note.find({}).limit(100);
     },
+
     note: async (
         parent: any, 
         args: { id: string }, 
@@ -14,6 +16,7 @@ const Query = {
     ) => {
         return await ctx.models.Note.findById(args.id);
     },
+
     user: async(
         parent: any, 
         args: { username: string }, 
@@ -21,6 +24,7 @@ const Query = {
     ) => {
         return await ctx.models.User.findOne({ username: args.username });
     },
+
     users: async(
         parent: any, 
         args: any, 
@@ -28,6 +32,7 @@ const Query = {
     ) => {
         return await ctx.models.User.find({});
     },
+
     me: async(
         parent: any, 
         args: any, 
@@ -35,6 +40,7 @@ const Query = {
     ) => {
         return await ctx.models.User.findById(ctx.user.id);
     },
+
     noteFeed: async (
         parent: any, 
         args: { cursor: string }, 
@@ -63,7 +69,7 @@ const Query = {
             cursor: newCursor,
             hasNextPage
         };
-      }
+    }
 }
 
 export default Query;
